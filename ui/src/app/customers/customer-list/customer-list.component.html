@@ -1,0 +1,27 @@
+<div class="container">
+  <table id="table" class="table table-hover table-mc-light-blue">
+  <thead>
+  <tr class="align-center">
+    <th class="align-center"> Priority Level</th>
+    <th class="align-center"> First Name</th>
+    <th class="align-center"> Last Name</th>
+    <th class="align-center"> Company</th>
+    <th class="align-center"> Edit </th>
+    <th class="align-center"> Delete </th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let customer of customers">
+    <td>{{customer.Ratings}}</td>
+    <td>{{customer.FirstName}}</td>
+    <td>{{customer.LastName}}</td>
+    <td>{{customer.Company}}</td>
+    <td> <button type="button" class="btn btn-info" (click)="editCustomer(customer);">Edit</button></td>
+    <td> <button type="button" class="btn btn-danger" (click)="deleteCustomer(customer);">Delete</button></td>
+
+  </tr>
+  </tbody>
+</table>
+  <app-add-customer (addCustomer)="onAddCustomer($event)"> </app-add-customer>
+</div>

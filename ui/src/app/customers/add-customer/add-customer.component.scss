@@ -1,0 +1,64 @@
+.push-button-down {
+  margin-top: 5%;
+}
+
+input:focus ~ label, select:focus ~ label, input:valid ~ label, select:valid ~ label {
+  font-size: 0.75em;
+  color: #8e44ad;
+  top: -2.25rem;
+  -webkit-transition: all 0.125s ease;
+  transition: all 0.125s ease;
+}
+
+.styled-input {
+  float: left;
+  width: 19%;
+  margin: 2rem 5px 1rem;
+  position: relative;
+}
+
+.styled-input label {
+  color: #999;
+  padding: 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+  pointer-events: none;
+}
+
+.styled-input.wide { width: 100%; }
+
+input,
+select {
+  padding: 1rem 1rem;
+  border: 0;
+  border-bottom: solid 1px;
+  width: 100%;
+  font-size: 1rem;
+}
+
+input ~ span,
+select ~ span {
+  display: block;
+  width: 0;
+  height: 3px;
+  background: #8e44ad;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  -webkit-transition: all 0.125s ease;
+  transition: all 0.125s ease;
+}
+
+input:focus,
+select:focus { outline: 0; }
+
+input:focus ~ span,
+select:focus ~ span {
+  width: 100%;
+  -webkit-transition: all 0.075s ease;
+  transition: all 0.075s ease;
+}
+

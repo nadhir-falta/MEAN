@@ -1,0 +1,31 @@
+<form (ngSubmit)="onSubmit()">
+  <fieldset>
+    <div class="styled-input">
+      <input type="text" [(ngModel)]="newCustomer.FirstName" name="firstName" required>
+      <label>First Name</label>
+      <span></span>
+    </div>
+    <div class="styled-input">
+      <input type="text" [(ngModel)]="newCustomer.LastName" name="lastName" required>
+      <label>Last Name</label>
+    </div>
+    <div class="styled-input">
+      <input type="text" [(ngModel)]="newCustomer.Company" name="company" required>
+      <label>Company</label>
+      <span></span>
+    </div>
+    <div class="styled-input">
+      <select [(ngModel)]="newCustomer.Ratings" name="ratings">
+        <option value="High" selected>High Priority</option>
+        <option value="Medium">Medium Priority</option>
+        <option value="Low">Low Prioirty</option>
+      </select>
+      <label>Ratings</label>
+      <span></span>
+    </div>
+    <div class="styled-input">
+      <button *ngIf="!this.update" type="submit" class="btn btn-primary">Submit</button>
+      <button *ngIf="this.update" type="submit" class="btn btn-primary">Update</button>
+    </div>
+  </fieldset>
+</form>

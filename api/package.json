@@ -1,0 +1,26 @@
+{
+  "name": "mean",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nadhir-falta/MEAN.git"
+  },
+  "author": "Nadhir Falta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nadhir-falta/MEAN/issues"
+  },
+  "homepage": "https://github.com/nadhir-falta/MEAN#readme",
+  "dependencies": {
+    "body-parser": "1.17.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "mongoose": "^4.13.6"
+  }
+}
