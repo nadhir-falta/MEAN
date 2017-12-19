@@ -13,6 +13,7 @@ export class CustomerService {
   constructor(private http: HttpClient) { }
 
   public customerToEdit: Subject<any> = new Subject();
+  public updateList: Subject<any> = new Subject();
 
   private serverApi: string = 'http://localhost:3000';
 

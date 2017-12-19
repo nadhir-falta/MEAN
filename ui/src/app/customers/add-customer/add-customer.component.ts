@@ -18,17 +18,15 @@ export class AddCustomerComponent implements OnInit {
   private update: boolean = false;
 
   ngOnInit(): void {
-    this.customerService.customerToEdit.subscribe(customerToEdit => {
-      this.newCustomer = customerToEdit;
-      this.update = true;
+
+    this.customerService.customerToEdit
+      .subscribe(customerToEdit => {
+        this.newCustomer = customerToEdit;
+        this.update = true;
     });
-    this.newCustomer = {
-      FirstName: '',
-      LastName: '',
-      Ratings: '',
-      Company: '',
-      _id: ''
-    };
+
+    this.newCustomer = this.initNewCustomer();
+
   }
 
   public onSubmit(): void {
@@ -36,8 +34,9 @@ export class AddCustomerComponent implements OnInit {
       this.customerService.updateCustomer(this.newCustomer).subscribe(
         (response: any) => {
           if (response.success === true) {
-            //If success, update the view-list component
+            this.customerService.updateList.next(true);
             this.update = false;
+            this.newCustomer = this.initNewCustomer();
           }
         }
       );
@@ -45,10 +44,21 @@ export class AddCustomerComponent implements OnInit {
       this.customerService.addCustomer(this.newCustomer).subscribe(
         (response: any) => {
           if (response.success === true) {
-            //If success, update the view-list component
+            this.customerService.updateList.next(true);
+            this.newCustomer = this.initNewCustomer();
           }
         }
       );
     }
+  }
+
+  private initNewCustomer(): Customer {
+    return {
+      FirstName: '',
+      LastName: '',
+      Ratings: '',
+      Company: '',
+      _id: ''
+    };
   }
 }

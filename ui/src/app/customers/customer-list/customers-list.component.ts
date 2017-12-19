@@ -18,6 +18,9 @@ export class CustomersListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadLists();
+
+    this.customerService.updateList.subscribe(
+      response => this.loadLists());
   }
 
   public editCustomer(customer: Customer): void {
