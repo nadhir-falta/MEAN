@@ -1,21 +1,21 @@
-<form (ngSubmit)="onSubmit()">
+<form *ngIf="form" [formGroup]="form" (ngSubmit)="onSubmit()">
   <fieldset>
     <div class="styled-input">
-      <input type="text" [(ngModel)]="newCustomer.FirstName" name="firstName" required>
+      <input type="text" formControlName="FirstName" name="firstName" required>
       <label>First Name</label>
       <span></span>
     </div>
     <div class="styled-input">
-      <input type="text" [(ngModel)]="newCustomer.LastName" name="lastName" required>
+      <input type="text" formControlName="LastName" name="lastName" required>
       <label>Last Name</label>
     </div>
     <div class="styled-input">
-      <input type="text" [(ngModel)]="newCustomer.Company" name="company" required>
+      <input type="text" formControlName="Company" name="company" required>
       <label>Company</label>
       <span></span>
     </div>
     <div class="styled-input">
-      <select [(ngModel)]="newCustomer.Ratings" name="ratings">
+      <select formControlName="Ratings" name="ratings">
         <option value="High" selected>High Priority</option>
         <option value="Medium">Medium Priority</option>
         <option value="Low">Low Prioirty</option>

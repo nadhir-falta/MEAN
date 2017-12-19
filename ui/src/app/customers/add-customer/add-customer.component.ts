@@ -1,5 +1,7 @@
 import { Component,
          OnInit }           from '@angular/core';
+import { FormControl,
+         FormGroup }        from '@angular/forms';
 import { Customer }         from '../shared/types/customer';
 import { CustomerService }  from '../shared/services/customers.service';
 
@@ -14,51 +16,51 @@ export class AddCustomerComponent implements OnInit {
   constructor(private customerService: CustomerService) {
   }
 
-  private newCustomer: Customer;
+  public form: FormGroup;
   private update: boolean = false;
 
   ngOnInit(): void {
 
     this.customerService.customerToEdit
       .subscribe(customerToEdit => {
-        this.newCustomer = customerToEdit;
+        this.form.patchValue(customerToEdit);
         this.update = true;
     });
 
-    this.newCustomer = this.initNewCustomer();
+    this.form = this.initForm();
 
   }
 
   public onSubmit(): void {
     if (this.update) {
-      this.customerService.updateCustomer(this.newCustomer).subscribe(
+      this.customerService.updateCustomer(this.form.value).subscribe(
         (response: any) => {
           if (response.success === true) {
             this.customerService.updateList.next(true);
             this.update = false;
-            this.newCustomer = this.initNewCustomer();
+            this.form.reset();
           }
         }
       );
     } else {
-      this.customerService.addCustomer(this.newCustomer).subscribe(
+      this.customerService.addCustomer(this.form.value).subscribe(
         (response: any) => {
           if (response.success === true) {
             this.customerService.updateList.next(true);
-            this.newCustomer = this.initNewCustomer();
+            this.form.reset();
           }
         }
       );
     }
   }
 
-  private initNewCustomer(): Customer {
-    return {
-      FirstName: '',
-      LastName: '',
-      Ratings: '',
-      Company: '',
-      _id: ''
-    };
+  private initForm(): FormGroup {
+    return new FormGroup({
+      FirstName: new FormControl(''),
+      LastName: new FormControl(''),
+      Ratings: new FormControl(''),
+      Company: new FormControl(''),
+      _id: new FormControl('')
+    });
   }
 }
